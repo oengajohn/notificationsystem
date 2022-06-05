@@ -1,0 +1,95 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="notificationsystem:war exploded">
+    <output-path>$PROJECT_DIR$/target/notificationsystem</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>notificationsystem</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="notificationsystem" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" />
+          <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.2.0" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" />
+          <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.1.2" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.junit5:arquillian-junit5-container:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.test:arquillian-test-api:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.test:arquillian-test-spi:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.core:arquillian-core-spi:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.container:arquillian-container-test-api:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-api:1.2.6" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.container:arquillian-container-test-spi:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.core:arquillian-core-impl-base:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.test:arquillian-test-impl-base:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.container:arquillian-container-impl-base:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.config:arquillian-config-api:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.config:arquillian-config-impl-base:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.config:arquillian-config-spi:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.container:arquillian-container-test-impl-base:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.junit5:arquillian-junit5-core:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.protocol:arquillian-protocol-servlet:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.container:arquillian-container-spi:1.7.0.Alpha10" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.2" />
+          <element id="library" level="project" name="Maven: org.hibernate.orm:hibernate-core:6.0.1.Final" />
+          <element id="library" level="project" name="Maven: jakarta.persistence:jakarta.persistence-api:3.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:6.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.jboss:jandex:2.4.2.Final" />
+          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.5.1" />
+          <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.12.9" />
+          <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.1" />
+          <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:2.0.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-runtime:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-core:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:txw2:3.0.2" />
+          <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:4.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" />
+          <element id="library" level="project" name="Maven: org.antlr:antlr4-runtime:4.10" />
+          <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:7.0.4.Final" />
+          <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:3.0.0" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.3.4" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
+          <element id="library" level="project" name="Maven: com.oracle.database.jdbc:ojdbc10:19.14.0.0" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.24" />
+          <element id="library" level="project" name="Maven: org.microprofile-ext.openapi-ext:openapi-ui:1.1.5" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.12.0" />
+          <element id="library" level="project" name="Maven: org.aerogear.kafka:kafka-cdi-extension:0.1.0" />
+          <element id="library" level="project" name="Maven: org.apache.kafka:kafka-clients:1.0.0" />
+          <element id="library" level="project" name="Maven: org.lz4:lz4-java:1.4" />
+          <element id="library" level="project" name="Maven: org.xerial.snappy:snappy-java:1.1.4" />
+          <element id="library" level="project" name="Maven: org.apache.kafka:kafka-streams:1.0.0" />
+          <element id="library" level="project" name="Maven: org.apache.kafka:connect-json:1.0.0" />
+          <element id="library" level="project" name="Maven: org.apache.kafka:connect-api:1.0.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.1" />
+          <element id="library" level="project" name="Maven: org.rocksdb:rocksdbjni:5.7.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-email:1.5" />
+          <element id="library" level="project" name="Maven: org.jboss.arquillian.core:arquillian-core-api:1.7.0.Alpha10" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/notificationsystem/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="notificationsystem/web/Web" />
+    </root>
+  </artifact>
+</component>

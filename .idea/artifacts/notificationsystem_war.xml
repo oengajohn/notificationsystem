@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="notificationsystem:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>notificationsystem</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="notificationsystem.war">
+      <element id="artifact" artifact-name="notificationsystem:war exploded" />
+    </root>
+  </artifact>
+</component>
