@@ -7,7 +7,8 @@ import com.systech.notificationsystem.qualifier.SendEmailProvider;
 import com.systech.notificationsystem.service.MailSender;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -19,7 +20,8 @@ import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 
 @SendEmailProvider(MailProvider.JAVAX_MAIL)
-@Stateless
+@Singleton
+@Startup
 public class JavaMailSenderImpl implements MailSender {
     @Inject
     private MailConfig mailConfig;
@@ -28,9 +30,6 @@ public class JavaMailSenderImpl implements MailSender {
     private Logger log;
     @PostConstruct
     public void setup(){
-
-        // Mention the Sender's email address
-        String from = mailConfig.getFrom();
 
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
         String host = mailConfig.getHost();
@@ -46,7 +45,7 @@ public class JavaMailSenderImpl implements MailSender {
         // Get the Session object.// and pass username and password
         session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, mailConfig.getPassword());
+                return new PasswordAuthentication(mailConfig.getUsername(), mailConfig.getPassword());
             }
         });
 
