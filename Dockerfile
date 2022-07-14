@@ -15,7 +15,7 @@ ENV DB_URI notifications_db:5444
 ENV POSTGRE_VERSION 42.3.3
 ENV JBOSS_CLI /opt/jboss/wildfly/bin/jboss-cli.sh
 ENV DEPLOYMENT_DIR /opt/jboss/wildfly/standalone/deployments/
-ENV JAVA_OPTS -Xms1024M -Xmx2048M -XX:MetaspaceSize=2048M -XX:MaxMetaspaceSize=2048m -XX:CompileThreshold=8000 -Djava.net.preferIPv4Stack=true -Djboss.as.management.blocking.timeout=600
+ENV JAVA_OPTS -Xms512M -Xmx2048M -XX:MetaspaceSize=690M -XX:MaxMetaspaceSize=1366m -XX:CompileThreshold=8000 -Djava.net.preferIPv4Stack=true -Djboss.as.management.blocking.timeout=600
 
 # Setting WildFly Admin Console
 RUN echo "=> Adding WildFly administrator"

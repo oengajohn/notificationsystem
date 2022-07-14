@@ -20,14 +20,21 @@ public class SmsListenerService {
     @Inject
     private Logger log;
 
-    @Consumer(topics = Config.SMS_TOPIC_ENTITY, groupId = Config.SMS_GROUP_ID_ENTITY)
+    @Inject
+    private SmsPublisherService publishSmsToFundMaster;
+
+    @Consumer(
+            topics = Config.TO_NS_TOPIC_SMS,
+            groupId = Config.TO_NS_SMS_GROUP_ID_ENTITY
+    )
     public void receiver(final JsonObject message) {
         final Sms sms = JsonUtils.fromJson(message, Sms.class);
-        System.out.println("That's what I got from the entity: " + sms.getClientNumber());
         var sent = smsSender.sendSms(sms);
-        if(sent){
-            //TODO: save the sent sms
-            log.info("Saving to db");
+        if (sent) {
+            //TODO: publish to fund master
+            log.info("Publishing sms to fund master for update of delivery status {}",sms.getClientNumber());
+            publishSmsToFundMaster.sendMessage(sms);
+
         }
 
 

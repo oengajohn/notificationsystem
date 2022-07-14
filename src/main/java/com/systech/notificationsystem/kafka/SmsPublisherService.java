@@ -13,7 +13,7 @@ public class SmsPublisherService {
     private SimpleKafkaProducer<Integer, JsonObject> producer;
 
     public <T> void sendMessage(T entity) {
-        producer.send(Config.SMS_TOPIC_ENTITY, JsonUtils.toJson(entity));
+        producer.send(Config.TO_FUND_MASTER_SMS_TOPIC_ENTITY, JsonUtils.toJson(entity));
     }
 
 }

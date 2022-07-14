@@ -2,8 +2,10 @@
 package com.systech.notificationsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.systech.notificationsystem.model.enums.MessageType;
+import com.systech.notificationsystem.model.enums.MessagingUserType;
+import com.systech.notificationsystem.model.enums.YesNo;
 import java.util.Date;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import lombok.Getter;
@@ -20,25 +22,25 @@ public class MailDTO {
 
     private String clientName;
 
-    private String delivered;
+    private YesNo delivered;
 
-    private String emailRead;
+    private YesNo emailRead;
 
     private String mailFrom;
 
-    private String fastTrack;
+    private YesNo fastTrack;
 
     private String mailSubject;
 
     private String message;
 
-    private String messageType;
+    private MessageType messageType;
 
     private Integer retryCount;
 
     private Long schemeId;
 
-    private String sendAsBatch;
+    private YesNo sendAsBatch;
 
     private String senderName;
 
@@ -49,7 +51,7 @@ public class MailDTO {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date timeCreated;
 
-    private String messagingUserType;
+    private MessagingUserType messagingUserType;
 
     @Override
     public String toString() {

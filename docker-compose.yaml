@@ -8,18 +8,31 @@ services:
     volumes:
     - ./kafka/config/zookeeper-1/zookeeper.properties:/kafka/config/zookeeper.properties
     - ./kafka/data/zookeeper-1/:/tmp/zookeeper/
+    expose:
+      - '2181'
     networks:
-    - kafka
+      - backend
+      - frontend
   kafka-1:
     container_name: kafka-1
     image: systech/kafka:3.2.0
     build: 
       context: ./kafka/
+    depends_on:
+      zookeeper-1:
+        condition: service_started
     volumes:
     - ./kafka/config/kafka-1/server.properties:/kafka/config/server.properties
     - ./kafka/data/kafka-1/:/tmp/kafka-logs/
+    ports:
+      - '9092:9092'
+
+    expose:
+      - '9092'
     networks:
-    - kafka
+      - backend
+      - frontend
+  
   kafka-2:
     container_name: kafka-2
     image: systech/kafka:3.2.0
@@ -28,119 +41,110 @@ services:
     volumes:
     - ./kafka/config/kafka-2/server.properties:/kafka/config/server.properties
     - ./kafka/data/kafka-2/:/tmp/kafka-logs/
+    depends_on:
+      zookeeper-1:
+        condition: service_started
+    expose:
+      - '9092'
     networks:
-    - kafka
+      - backend
+      - frontend
+
   kafka-3:
     container_name: kafka-3
     image: systech/kafka:3.2.0
     build: 
       context: ./kafka/
+    depends_on:
+      zookeeper-1:
+        condition: service_started
     volumes:
     - ./kafka/config/kafka-3/server.properties:/kafka/config/server.properties
     - ./kafka/data/kafka-3/:/tmp/kafka-logs/
-    networks:
-    - kafka
+    expose:
+      - '9092'
 
-  notifications_db:
-    image: postgres:14.2
+    networks:
+      - backend
+      - frontend
+
+  notifiactionsystem:
+    image: systech/notifiactionsystem
+    build:
+      context: .
     restart: always
-    container_name: notifications_db
+    depends_on:
+      zookeeper-1:
+        condition: service_started
 
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=notifications
-    logging:
-      options:
-        max-size: 10m
-        max-file: "3"
+      - KAFKA_SERVICE_HOST=kafka-1
+      - KAFKA_SERVICE_PORT=9092
     networks:
-      - kafka
+      - backend
+      - frontend
     ports:
-      - '5444:5432'
-    volumes:
-      - ./notifications_db-data:/var/lib/postgresql/data
-  notification_web1:
+      - "8081:8080"
+      - "9991:9990"
+
+    expose:
+      # Opens port 8080,9990 on the container
+      - '8081'
+      - '9991'
+    deploy:
+      mode: replicated
+      replicas: 3
+  notifiactionsystem2:
     image: systech/notifiactionsystem
     build:
       context: .
     restart: always
-    container_name: notification_web1
     depends_on:
-      notifications_db:
+      zookeeper-1:
         condition: service_started
-      kafka-1:
-        condition: service_started
-      kafka-2:
-        condition: service_started
-      kafka-3:
-        condition: service_started
+
     environment:
       - KAFKA_SERVICE_HOST=kafka-1
       - KAFKA_SERVICE_PORT=9092
     networks:
-      - kafka
+      - backend
+      - frontend
     ports:
-      - '8100:8080'
-      - '8101:9990'
+      - "8082:8080"
+      - "9992:9990"
+
     expose:
       # Opens port 8080,9990 on the container
-      - '8100'
-      - '8101'
-  notification_web2:
+      - '8082'
+      - '9992'
+  notifiactionsystem3:
     image: systech/notifiactionsystem
     build:
       context: .
     restart: always
-    container_name: notification_web2
     depends_on:
-      notifications_db:
+      zookeeper-1:
         condition: service_started
-      kafka-1:
-        condition: service_started
-      kafka-2:
-        condition: service_started
-      kafka-3:
-        condition: service_started
+
     environment:
       - KAFKA_SERVICE_HOST=kafka-1
       - KAFKA_SERVICE_PORT=9092
     networks:
-      - kafka
+      - backend
+      - frontend
     ports:
-      - '8103:8080'
-      - '8104:9990'
+      - "8083:8080"
+      - "9993:9990"
+
     expose:
       # Opens port 8080,9990 on the container
-      - '8103'
-      - '8104'
-  notification_web3:
-    image: systech/notifiactionsystem
-    build:
-      context: .
-    restart: always
-    container_name: notification_web3
-    depends_on:
-      notifications_db:
-        condition: service_started
-      kafka-1:
-        condition: service_started
-      kafka-2:
-        condition: service_started
-      kafka-3:
-        condition: service_started
-    environment:
-      - KAFKA_SERVICE_HOST=kafka-1
-      - KAFKA_SERVICE_PORT=9092
-    networks:
-      - kafka
-    ports:
-      - '8105:8080'
-      - '8106:9990'
-    expose:
-      # Opens port 8080,9990 on the container
-      - '8105'
-      - '8106'
-networks: 
-  kafka:
-    name: kafka
+      - '8083'
+      - '9993'
+#    deploy:
+#      mode: replicated
+#      replicas: 3
+
+
+networks:
+  backend:
+  frontend:

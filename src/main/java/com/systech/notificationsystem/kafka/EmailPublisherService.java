@@ -19,7 +19,8 @@ public class EmailPublisherService {
     private SimpleKafkaProducer<Integer, JsonObject> producer;
 
     public <T> void sendMessage(T entity) {
-        producer.send(Config.EMAIL_TOPIC_ENTITY, JsonUtils.toJson(entity), new Callback() {
+        log.info("::::Publishing email to fund master for update::::");
+        producer.send(Config.TO_FUND_MASTER_EMAIL_TOPIC_ENTITY, JsonUtils.toJson(entity), new Callback() {
             @Override
             public void onCompletion(RecordMetadata recordMetadata, Exception e) {
                 if (e==null){

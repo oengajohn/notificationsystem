@@ -20,12 +20,17 @@ public class MailListenerService {
     @Inject
     private Logger log;
 
-    @Consumer(topics = Config.EMAIL_TOPIC_ENTITY, groupId = Config.EMAIL_GROUP_ID_ENTITY)
+    @Inject
+    private EmailPublisherService publishEmailToFundMaster;
+
+    @Consumer(topics = Config.TO_NS_TOPIC_EMAIL, groupId = Config.TO_NS_EMAIL_GROUP_ID_ENTITY)
     public void receiver(final JsonObject message) {
         final MailDTO mailDTO = JsonUtils.fromJson(message, MailDTO.class);
         var sent = mailSender.sendEmail(mailDTO);
         if(sent){
-            //TODO: save the sent sms
+            //TODO: Publish to fund master
+            log.info("Publishing email to fund master for update of delivery status {}",mailDTO.getClientEmail());
+            publishEmailToFundMaster.sendMessage(mailDTO);
         }
 
 
