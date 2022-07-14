@@ -54,7 +54,7 @@ public class SmsSimulator {
             description = "email sent Successfully",
             content = @Content(mediaType = "application/json"))
     public Response sendEmail(MailDTO mailDTO) {
-        for(int i=0;i<3000;i++) {
+        for(int i=0;i<5;i++) {
             mailDTO.setMessage("Hello"+i);
             emailPublisherService.sendMessage(mailDTO);
         }
