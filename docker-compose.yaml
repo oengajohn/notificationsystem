@@ -91,9 +91,9 @@ services:
 #      # Opens port 8080,9990 on the container
 #      - '8081'
 #      - '9991'
-#    deploy:
-#      mode: replicated
-#      replicas: 3
+##    deploy:
+##      mode: replicated
+##      replicas: 3
 #  notifiactionsystem2:
 #    image: systech/notifiactionsystem
 #    build:
